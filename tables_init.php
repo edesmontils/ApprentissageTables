@@ -1,10 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['prenom'])) {
-	$prenom = $_SESSION['prenom'];
-	$type = $_SESSION['type'];
-	$nb = $_SESSION['nb'];
-}
+require 'fonctions.php';
+$prenom = $_SESSION['prenom'] ?? '';
+$type = $_SESSION['type'] ?? 'addition';
+$nb = $_SESSION['nb_demande'] ?? '';
+$max = 81;
 ?>
 
 <?php include 'header.php'; ?>
@@ -14,40 +14,38 @@ if (isset($_SESSION['prenom'])) {
 			</div>
 			<div id="samples">
 
-<script type="text/javascript">
-window.onload =function setFocus(){
-    document.infos.prenom.focus();
-    return true;
-}
-function verif(){
-	var reg = /^[\d]+$/;
-	if (document.infos.prenom.value == "") {
-		alert('Attention, tu dois indiquer ton prénom !'); 
+<script>
+window.onload = function () {
+	document.infos.prenom.focus();
+};
+function verif() {
+	var reg = /^\d+$/;
+	var nb = document.infos.nb.value;
+	if (document.infos.prenom.value.trim() == "") {
+		alert('Attention, tu dois indiquer ton prÃ©nom !');
 		document.infos.prenom.focus();
-    	return false;
-		
-	} else if (document.infos.nb.value == "") return true;
-    else if (reg.test(document.infos.nb.value)) return true;
-    else {
-    	alert('Attention '+document.infos.prenom.value+', pour le nombre d\'opérations, tu dois mettre un nombre ou rien');
-    	document.infos.nb.focus();
-    	return false;
-    }
+		return false;
+	} else if (nb == "") return true;
+	else if (reg.test(nb) && nb >= 1 && nb <= <?php echo $max; ?>) return true;
+	else {
+		alert('Attention ' + document.infos.prenom.value + ', pour le nombre d\'opÃ©rations, tu dois mettre un nombre entre 1 et <?php echo $max; ?> ou rien');
+		document.infos.nb.focus();
+		return false;
+	}
 }
 </script>
 
 <h1>Programme pour apprendre les tables</h1>
 
-<FORM name="infos" action="tables.php" method="GET">
-		<p>Indique ton prénom : <INPUT type="text" name="prenom" value="<?php echo $prenom;?>"/></p>
-		<p>Veux tu faire des additions ou des multiplications ?   <br/>
-			<INPUT type="radio" name="type" value="addition" <?php echo (isset($type)?($type=='addition'?'checked':''):'checked');?>/> Des additions <br/>
-			<INPUT type="radio" name="type" value="multiplication" <?php echo ($type=='multiplication'?'checked':'');?>/> Des multiplications
-			</p>
-		<p>Combien d'opérations veux-tu faire ?  <INPUT type="text" name="nb" value="<?php echo $nb;?>"/> (ne mets pas de valeur si tu veux faire toutes les tables)</p>
-		<INPUT type="submit" name="Envoyer" value="Commencer" onClick="return verif();"/>
-</FORM>
-
+<form name="infos" action="tables.php" method="post">
+		<p>Indique ton prÃ©nom : <input type="text" name="prenom" value="<?php echo h($prenom); ?>" /></p>
+		<p>Veux-tu faire des additions ou des multiplications ?<br />
+			<input type="radio" name="type" value="addition" <?php echo $type == 'addition' ? 'checked' : ''; ?> /> Des additions <br />
+			<input type="radio" name="type" value="multiplication" <?php echo $type == 'multiplication' ? 'checked' : ''; ?> /> Des multiplications
+		</p>
+		<p>Combien d'opÃ©rations veux-tu faire ? <input type="text" name="nb" inputmode="numeric" value="<?php echo h($nb); ?>" /> (ne mets pas de valeur si tu veux faire toutes les tables)</p>
+		<input type="submit" value="Commencer" onclick="return verif();" />
+</form>
 
 			</div>
 <?php include 'footer.php'; ?>

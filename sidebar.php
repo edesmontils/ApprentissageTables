@@ -1,9 +1,9 @@
        <div id="sidebar">
-			<h3 class="title">Les outils présentés sont des petits programmes très simples permettant aux élèves de faire quelques révisions.</h3>
+			<h3 class="title">Les outils prÃ©sentÃ©s sont des petits programmes trÃ¨s simples permettant aux Ã©lÃ¨ves de faire quelques rÃ©visions.</h3>
 			<div class="content">
-				<p>Quelques outils proposés :</p>
+				<p>Quelques outils proposÃ©s :</p>
 				<ul>
-					<li><a href="tables_init">Additions et Multiplications</a></li>
+					<li><a href="tables_init.php">Additions et Multiplications</a></li>
 				</ul>
 			</div>
 			<div class="bottom"></div>
