@@ -1,4 +1,8 @@
 <?php
+// Les pages sont en UTF-8 : on l'annonce explicitement pour ne pas dépendre
+// de la configuration du serveur (default_charset, AddDefaultCharset…).
+if (!headers_sent()) header('Content-Type: text/html; charset=utf-8');
+
 // Échappe une valeur pour l'afficher dans du HTML.
 function h($s) {
 	return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');

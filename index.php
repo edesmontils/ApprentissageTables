@@ -1,4 +1,7 @@
-<?php include 'header.php'; ?>
+<?php
+require 'fonctions.php';
+include 'header.php';
+?>
 			<div id="splash">
 				<div class="top"><img src="images/Math.png" alt="" width="460" height="180" /></div>
 				<div class="bottom"></div>
