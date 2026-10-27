@@ -5,15 +5,10 @@ $prenom = $_SESSION['prenom'] ?? '';
 $type = $_SESSION['type'] ?? 'addition';
 $nb = $_SESSION['nb_demande'] ?? '';
 $max = 81;
+$titre = 'Réviser les tables';
 ?>
 
 <?php include 'header.php'; ?>
-			<div id="splash">
-				<div class="top"><img src="images/Math.png" alt="" width="460" height="180" /></div>
-				<div class="bottom"></div>
-			</div>
-			<div id="samples">
-
 <script>
 window.onload = function () {
 	document.infos.prenom.focus();
@@ -35,17 +30,32 @@ function verif() {
 }
 </script>
 
-<h1>Programme pour apprendre les tables</h1>
+		<h1>Réviser les tables</h1>
 
-<form name="infos" action="tables.php" method="post">
-		<p>Indique ton prénom : <input type="text" name="prenom" value="<?php echo h($prenom); ?>" /></p>
-		<p>Veux-tu faire des additions ou des multiplications ?<br />
-			<input type="radio" name="type" value="addition" <?php echo $type == 'addition' ? 'checked' : ''; ?> /> Des additions <br />
-			<input type="radio" name="type" value="multiplication" <?php echo $type == 'multiplication' ? 'checked' : ''; ?> /> Des multiplications
-		</p>
-		<p>Combien d'opérations veux-tu faire ? <input type="text" name="nb" inputmode="numeric" value="<?php echo h($nb); ?>" /> (ne mets pas de valeur si tu veux faire toutes les tables)</p>
-		<input type="submit" value="Commencer" onclick="return verif();" />
-</form>
+		<form name="infos" action="tables.php" method="post">
+			<p class="champ">
+				<label for="prenom">Comment t'appelles-tu ?</label>
+				<input class="ligne" type="text" id="prenom" name="prenom" autocomplete="given-name" value="<?php echo h($prenom); ?>" />
+			</p>
+			<fieldset class="champ">
+				<legend>Que veux-tu réviser ?</legend>
+				<div class="choix-liste">
+					<label class="choix">
+						<input type="radio" name="type" value="addition" <?php echo $type == 'addition' ? 'checked' : ''; ?> />
+						<span class="choix-corps"><span class="choix-signe" aria-hidden="true">+</span>Des additions</span>
+					</label>
+					<label class="choix">
+						<input type="radio" name="type" value="multiplication" <?php echo $type == 'multiplication' ? 'checked' : ''; ?> />
+						<span class="choix-corps"><span class="choix-signe" aria-hidden="true">×</span>Des multiplications</span>
+					</label>
+				</div>
+			</fieldset>
+			<p class="champ">
+				<label for="nb">Combien d'opérations veux-tu faire ?</label>
+				<input class="nombre" type="text" id="nb" name="nb" inputmode="numeric" aria-describedby="aide-nb" value="<?php echo h($nb); ?>" />
+				<span class="aide" id="aide-nb">Laisse vide pour faire toutes les tables (<?php echo $max; ?> opérations).</span>
+			</p>
+			<button class="bouton" type="submit" onclick="return verif();">Commencer</button>
+		</form>
 
-			</div>
 <?php include 'footer.php'; ?>
