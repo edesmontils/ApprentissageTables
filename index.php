@@ -1,15 +1,13 @@
 <?php
 require_once 'fonctions.php';
 entete_html();
+$titre = 'Accueil';
+$a = random_int(2, 9);
+$b = random_int(2, 9);
 include 'header.php';
 ?>
-			<div id="splash">
-				<div class="top"><img src="images/Math.png" alt="" width="460" height="180" /></div>
-				<div class="bottom"></div>
-			</div>
-			<div id="welcome">
-				<h2>Bienvenue à vous !</h2>
-				<p>Ce mini-site propose un ensemble d'outils simples mais j'espère utiles pour des enfants de primaires</p>
-			</div>
-
+		<p class="calcul-geant" aria-hidden="true"><?php echo $a.' × '.$b.' = '.($a * $b); ?></p>
+		<h1>Bienvenue !</h1>
+		<p class="chapeau">Des petits outils pour réviser à ton rythme. Pour l'instant, tu peux t'entraîner sur les additions et les multiplications de 1 à 9.</p>
+		<p><a class="bouton" href="tables_init.php">Réviser mes tables</a></p>
 <?php include 'footer.php'; ?>
