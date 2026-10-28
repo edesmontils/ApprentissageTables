@@ -1,5 +1,6 @@
 <?php
-require 'fonctions.php';
+require_once 'fonctions.php';
+entete_html();
 $titre = 'Accueil';
 $a = random_int(2, 9);
 $b = random_int(2, 9);

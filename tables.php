@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'fonctions.php';
+require_once 'fonctions.php';
 $max = 10;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['prenom'])) {
@@ -69,6 +69,7 @@ $fin = ($i >= $nb);
 $message = $_SESSION['message'] ?? '';
 $verdict = $_SESSION['verdict'] ?? 'debut';
 $titre = $fin ? 'Résultats' : 'Opération '.($i + 1).' sur '.$nb;
+entete_html();
 ?>
 
 <?php include 'header.php'; ?>
