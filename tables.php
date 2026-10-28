@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'fonctions.php';
+require_once 'fonctions.php';
 $max = 10;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['prenom'])) {
@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['q'])) {
 
 $fin = ($i >= $nb);
 $message = $_SESSION['message'] ?? '';
+entete_html();
 ?>
 
 <?php include 'header.php'; ?>

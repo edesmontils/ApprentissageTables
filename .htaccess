@@ -1,3 +1,0 @@
-# Les fichiers du site sont encodés en UTF-8.
-AddDefaultCharset UTF-8
-AddCharset UTF-8 .css .js

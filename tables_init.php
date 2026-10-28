@@ -1,10 +1,11 @@
 <?php
 session_start();
-require 'fonctions.php';
+require_once 'fonctions.php';
 $prenom = $_SESSION['prenom'] ?? '';
 $type = $_SESSION['type'] ?? 'addition';
 $nb = $_SESSION['nb_demande'] ?? '';
 $max = 81;
+entete_html();
 ?>
 
 <?php include 'header.php'; ?>

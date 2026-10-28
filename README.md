@@ -17,5 +17,5 @@ puis ouvrir <http://localhost:8000>.
 - `index.php` : page d'accueil
 - `tables_init.php` : choix du prénom, du type d'opération et du nombre d'opérations
 - `tables.php` : le questionnaire, la correction et la note finale
-- `fonctions.php` : fonctions utilitaires (échappement, redirection…)
+- `fonctions.php` : fonctions utilitaires (échappement, redirection…) et `entete_html()`, qui annonce l'encodage UTF-8 : chaque page HTML doit l'appeler avant tout affichage
 - `header.php`, `footer.php`, `sidebar.php`, `default.css`, `images/` : mise en page (modèle « DesertSand » de Free CSS Templates)

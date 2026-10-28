@@ -1,5 +1,6 @@
 <?php
-require 'fonctions.php';
+require_once 'fonctions.php';
+entete_html();
 include 'header.php';
 ?>
 			<div id="splash">
